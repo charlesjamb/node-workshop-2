@@ -1,3 +1,5 @@
+var request = require('request');
+
 function requestJSON(url, callback) {
 	request(url, function(err, result) {
 		if (err) {
@@ -12,4 +14,4 @@ function requestJSON(url, callback) {
 	})	
 }
 
-export.requestJSON = requestJSON;
+exports.requestJSON = requestJSON;
