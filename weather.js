@@ -13,19 +13,13 @@ prompt.get('Where are you right now?', function(err, input) {
 		var userInput = input['Where are you right now?'].toLowerCase();
 
 		requestJSON('https://maps.googleapis.com/maps/api/geocode/json?address=' + userInput, function(err, result){
-				// console.log(result);
 				var userLatitude = result.results[0].geometry.location.lat;
 				var userLongitude = result.results[0].geometry.location.lng;
-				// console.log(userLatitude);
-				// console.log(userLongitude);
 
 				requestJSON('https://api.darksky.net/forecast/e8f3ee7861134c0e319a1e881f59ee7c/' + userLatitude + ',' + userLongitude, function(err, result) {
-					// variables
 					var daily = result['daily'];
 					var nextDays = [];
 					var nextSummarys = [];
-
-					console.log(daily);
 					
 					var table = new Table({
 						head: ['Next Days'.white.bold, 'Summary'.white.bold],
@@ -40,7 +34,6 @@ prompt.get('Where are you right now?', function(err, input) {
 						})
 					}
 
-					// console.logs
 					console.log("This week's summary: ".blue, daily.summary.green);
 					console.log(table.toString());
 
