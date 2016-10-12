@@ -18,7 +18,23 @@ prompt.get('Give me a word', function(err, input) {
 				console.log(err, 'Oops you fucked up, error in SynonymAPI prototype');
 			}
 			else {
-				console.log(result.noun);
+				// console.log(result);
+				var table = new Table({
+					head: ['Noun'.white, 'Adjective'.white, 'Adverb'.white, 'Verb'.white],
+				});
+				var noun = (result.noun && result.noun.syn) || [];
+				var adj = (result.adjective && result.adjective.sim) || [];
+				var adv = (result.adverb && result.adverb.syn) || [];
+				var verb = (result.verb && result.verb.syn) || [];
+
+				table.push(
+					[noun.join('\n'),
+					 adj.join('\n'),
+					 adv.join('\n'),
+					 verb.join('\n')]
+				)
+
+				console.log(table.toString());
 			}
 		});
 	}
