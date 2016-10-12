@@ -18,9 +18,8 @@ prompt.get('Give me a word', function(err, input) {
 				console.log(err, 'Oops you fucked up, error in SynonymAPI prototype');
 			}
 			else {
-				// console.log(result);
 				var table = new Table({
-					head: ['Noun'.white, 'Adjective'.white, 'Adverb'.white, 'Verb'.white],
+					head: ['Noun'.white.bold, 'Adjective'.white.bold, 'Adverb'.white.bold, 'Verb'.white.bold],
 				});
 				var noun = (result.noun && result.noun.syn) || [];
 				var adj = (result.adjective && result.adjective.sim) || [];

@@ -24,9 +24,11 @@ prompt.get('Where are you right now?', function(err, input) {
 					var daily = result['daily'];
 					var nextDays = [];
 					var nextSummarys = [];
+
+					console.log(daily);
 					
 					var table = new Table({
-						head: ['Next Days'.white, 'Summary'.white],
+						head: ['Next Days'.white.bold, 'Summary'.white.bold],
 					});
 
 					for (var i = 1; i <= 5; i++) {
